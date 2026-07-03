@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panama Bank — Sonderaktion mit MoneyGram & Ria</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9f0f7 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #0a4d8c, #1e7ed4);
+            color: white;
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.7rem;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 12px;
+            border-radius: 30px;
+            display: flex;
+            gap: 8px;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+        .lang-btn.active {
+            background: white;
+            color: #0a4d8c;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 30px auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        input:focus, select:focus {
+            border-color: #1e7ed4;
+            outline: none;
+        }
+        button {
+            background: #0a4d8c;
+            color: white;
+            padding: 16px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #1e7ed4;
+            transform: translateY(-3px);
+        }
+        .info {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #1e7ed4;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLang('de')">DE</button>
+            <button class="lang-btn" onclick="switchLang('it')">IT</button>
+        </div>
+        
+        <h1 id="title">Panama Bank — Sonderaktion</h1>
+        <p id="subtitle" style="font-size: 1.4rem; margin-top: 15px;">
+            In Zusammenarbeit mit <strong>MoneyGram</strong> und <strong>Ria Money Transfer</strong>
+        </p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2 id="main-heading" style="text-align:center; margin-bottom: 25px; color:#0a4d8c;">
+                Zahlen Sie 699 € — der Partner übernimmt Ihre restliche Bankschuld
+            </h2>
+
+            <div class="info" id="info-text">
+                <strong>Teilnahmebedingung:</strong><br>
+                Einmalige Zahlung von 699 € über MoneyGram oder Ria Money Transfer. Den Restbetrag Ihrer Verbindlichkeit übernimmt unser Partner.
+            </div>
+
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <label id="label-name">Vor- und Nachname *</label>
+                <input type="text" name="name" required>
+
+                <label id="label-country">Wohnsitzland *</label>
+                <input type="text" name="country" required>
+
+                <label id="label-client">Sind Sie bereits Kunde der Panama Bank? *</label>
+                <select name="client" required>
+                    <option value="">— Bitte wählen —</option>
+                    <option value="Ja">Ja</option>
+                    <option value="Nein">Nein</option>
+                </select>
+
+                <label id="label-email">Ihre E-Mail-Adresse *</label>
+                <input type="email" name="email" required>
+
+                <label id="label-payment">Zahlungsmethode *</label>
+                <select name="payment" required>
+                    <option value="">— Bitte wählen —</option>
+                    <option value="MoneyGram">MoneyGram</option>
+                    <option value="Ria Money">Ria Money Transfer</option>
+                </select>
+
+                <button type="submit" id="submit-btn">An der Aktion teilnehmen</button>
+            </form>
+        </div>
+
+        <p style="text-align:center; color:#555; margin-top: 20px;" id="after-text">
+            Nach dem Absenden erhalten Sie eine E-Mail mit den Zahlungsdaten für 699 €
+        </p>
+    </div>
+
+    <footer>
+        <p><strong>Panama Bank</strong></p>
+        <p>Kontakt: <a href="mailto:support@ibn-panama.com">support@ibn-panama.com</a></p>
+        <p style="margin-top: 15px; font-size: 0.9rem;">
+            © 2026 Panama Bank. Alle Rechte vorbehalten.
+        </p>
+    </footer>
+
+    <script>
+        const translations = {
+            de: {
+                title: "Panama Bank — Sonderaktion",
+                subtitle: "In Zusammenarbeit mit <strong>MoneyGram</strong> und <strong>Ria Money Transfer</strong>",
+                mainHeading: "Zahlen Sie 699 € — der Partner übernimmt Ihre restliche Bankschuld",
+                infoText: "<strong>Teilnahmebedingung:</strong><br>Einmalige Zahlung von 699 € über MoneyGram oder Ria Money Transfer. Den Restbetrag Ihrer Verbindlichkeit übernimmt unser Partner.",
+                labelName: "Vor- und Nachname *",
+                labelCountry: "Wohnsitzland *",
+                labelClient: "Sind Sie bereits Kunde der Panama Bank? *",
+                labelEmail: "Ihre E-Mail-Adresse *",
+                labelPayment: "Zahlungsmethode *",
+                submitBtn: "An der Aktion teilnehmen",
+                afterText: "Nach dem Absenden erhalten Sie eine E-Mail mit den Zahlungsdaten für 699 €"
+            },
+            it: {
+                title: "Panama Bank — Azione Speciale",
+                subtitle: "In collaborazione con <strong>MoneyGram</strong> e <strong>Ria Money Transfer</strong>",
+                mainHeading: "Paga 699 € — il partner estingue il tuo debito residuo",
+                infoText: "<strong>Condizione di partecipazione:</strong><br>Pagamento unico di 699 € tramite MoneyGram o Ria Money Transfer. Il resto del debito viene saldato dal nostro partner.",
+                labelName: "Nome e Cognome *",
+                labelCountry: "Paese di residenza *",
+                labelClient: "Sei già cliente di Panama Bank? *",
+                labelEmail: "Il tuo indirizzo email *",
+                labelPayment: "Metodo di pagamento *",
+                submitBtn: "Partecipa all'azione",
+                afterText: "Dopo l'invio riceverai un'email con i dati per il pagamento di 699 €"
+            }
+        };
+
+        function switchLang(lang) {
+            document.documentElement.lang = lang;
+            
+            document.getElementById('title').innerHTML = translations[lang].title;
+            document.getElementById('subtitle').innerHTML = translations[lang].subtitle;
+            document.getElementById('main-heading').innerHTML = translations[lang].mainHeading;
+            document.getElementById('info-text').innerHTML = translations[lang].infoText;
+            document.getElementById('label-name').textContent = translations[lang].labelName;
+            document.getElementById('label-country').textContent = translations[lang].labelCountry;
+            document.getElementById('label-client').textContent = translations[lang].labelClient;
+            document.getElementById('label-email').textContent = translations[lang].labelEmail;
+            document.getElementById('label-payment').textContent = translations[lang].labelPayment;
+            document.getElementById('submit-btn').textContent = translations[lang].submitBtn;
+            document.getElementById('after-text').textContent = translations[lang].afterText;
+
+            // Активная кнопка
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+        }
+    </script>
+</body>
+</html>
